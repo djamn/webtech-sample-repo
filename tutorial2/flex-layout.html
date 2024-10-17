@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Example</title>
+    <style>
+        /*
+        Very good flex layout explanation:
+        https://www.w3schools.com/css/css3_flexbox_container.asp
+        https://www.w3schools.com/css/css3_flexbox_items.asp
+        https://www.w3schools.com/css/css3_flexbox_responsive.asp
+        */
+
+        .container {
+            border: 1px solid red;
+            height: auto;
+            width: auto;
+            padding-bottom: 20px;
+            background-color: #f0f0f0;
+
+            /* Determines that the container uses flex layout */
+            display: flex;
+            /* Determines the placement of the items in the container */
+            flex-direction: row;         /* row, column, row-reverse, column-reverse... */
+            /* Determines the behavior of the container items when zooming */
+            flex-wrap: nowrap;           /* nowrap, wrap, wrap-reverse */
+            /* Align container items in a specific way horizontally - Keep in mind to have a proper width of the container */
+            justify-content: center;     /* flex-start, center, flex-end, space-around, space-between,... */
+            /* Align container items in a specific way vertically - Keep in mind to have a proper height of the container */
+            align-items: center;         /* flex-start, center, flex-end,... */
+        }
+
+        /* General layout of all boxes */
+        .box-general {
+            border: 2px solid rgb(49, 255, 49);
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 5px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+
+            display: flex;               /* Determines that the box uses flex layout */
+            justify-content: center;     /* Same as above but for the inside of the box (it is also a container) */
+            align-items: center;         /* Same as above but for the inside of the box (it is also a container) */
+        }
+
+        /*Specific layout for one box*/
+        #box1 {
+            order: 1;       /* Changes order of the boxes via css*/
+            flex-grow: 2;   /* Determines the growing factor of the box relative to the others when zooming out */
+            flex-shrink: 0; /* Determines the shrinking factor of the box relative to the others when zooming in - 0 = no shrinking */
+        }
+
+        #box2 {
+            order: 2;
+            flex-grow: 1;
+        }
+
+        #box3 {
+            order: 3;
+            flex-grow: 3;
+        }
+
+        /* Specific layout for devices with max width of 400px. Overwrites less specific layout */
+        @media (max-width:400px) {
+            #box1 {
+                background-color: aqua;
+                /* display: none; */        /* Makes box disappear */
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="box1" class="box-general">1</div>
+        <div id="box2" class="box-general">2</div>
+        <div id="box3" class="box-general">3</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <style>
+        /* #test {color: red;} */       /* ID (unique) always with #*/
+        /* .othertest {color:red;} */   /* Classes always with .*/
+        /* span {color: red;} */
+        /* body {color: green} */
+        /* * {color: red} */
+
+        /* ATTRIBUTES */
+        /* a[title] {color: red} */
+        /* a[title=link] {color: red} */
+        /* a[href*=aau] {color: red} */     /* aau must occur anywhere in the href */
+        /* a[href$=".at"] {color: red} */   /* href must end with .at */
+        /* https://www.w3schools.com/css/css_attribute_selectors.asp */
+
+        /* ADDITIONAL SELECTORS */
+        /* div > span {color: red;} */            /* Selects all spans where the parent element is a div */
+        /* div + span {color: red} */             /* Selects span that instantly follows after a div */
+        /* div ~ span {color: red} */           /* Selects all spans, that are on the same hierarchy with the div */
+
+        /* COMBINATIONS */
+        /* div h1 span {color: red} */
+        /* div .testspan {color: red} */
+
+        /* PSEUDO CLASSES */
+        /* div:hover {color: red} */
+        /* span:first-child {color:red} Auch last-child /nth-child usw */
+        /* https://www.w3schools.com/css/css_pseudo_classes.asp */
+
+        /* PSEUDO ELEMENTS */
+        /* p::first-letter {color: red} */
+        /* p::first-line {color:red} */
+        /* p::after {color: red; content: "hallo after"} */
+        /* p::before {color: red; content: "hallo before"} */
+        /* https://www.w3schools.com/css/css_pseudo_elements.asp */
+
+        /* INHERITANCE - More general defined styles (here: whole body) will get overwritten by more specified styles (here: all spans in div) */
+        /* body {color: red} */
+        /* div span {color: green} */
+    </style>
+
+</head>
+
+<body>
+    <p>TEST1</p>
+
+    <a title="link" href="#">Link</a>
+    <a title="otherlink" href="#other.aau.at">Other Link</a>
+
+
+    <p class="red-animation">Text in Body</p>
+    <p>
+    <div>Div in P</div>
+    </p>
+
+    <div id="test">
+        <span>Test</span>
+        <p>TEST</p>
+        <span class="testspan red-animation">Span in Div</span>
+        <p>Test</p>
+        <h2>H2 in Div</h2>
+        <h1>
+            <span>Span in H1 in Div</span><br>
+            <span>Span in H1 in Div</span>
+        </h1>
+        <span>Span in Div</span>
+        <p>Test</p>
+    </div>
+
+    <span> Span in Body</span>
+    <p>Paragraph in Body</p>
+    <span> Another span</span>
+
+    <div class="othertest">
+        <span>Text in Div - Other Test</span>
+        <h2>H2 in Div</h2>
+        <h1>
+            <span>Span in H1 in Div</span><br>
+            <span>Span in H1 in Div</span>
+        </h1>
+        <span>Span in Div</span>
+        <span>Span in Div</span>
+        <h2>
+            <span> Text within h2 and span </span>
+        </h2>
+        <span> Text within p3</span>
+        <span> Text within p4</span>
+
+        <h2>
+            <h3>
+                <span> Text within h2 within h3 within a span</span>
+            </h3>
+            <span> Text within h2 within a span</span>
+        </h2>
+    </div>
+
+    <div class="othertest">
+        TEST
+    </div>
+
+    <span>TEST2</span>
+</body>
+
+</html>
