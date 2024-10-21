@@ -1,0 +1,76 @@
+<html>
+  <body>
+    <script>
+      // 1. VAR (Function Scope & Hoisting)
+      function varExample() {
+        if (true) {
+          var x = 10;
+          console.log("Inside block (var):", x); 
+        }
+        console.log("Outside block (var):", x);
+      }
+      // varExample();
+
+      // 2. LET (Block Scope & No Hoisting)
+      function letExample() {
+        if (true) {
+          let y = 20;
+          if (true) {
+            console.log("Inside deeper block (let):", y); 
+          }
+          console.log("Inside block (let):", y); 
+        }
+        // console.log("Outside block (let):", y);
+      }
+      // letExample();
+
+      // 3. CONST (Block Scope & Immutable Reference)
+      function constExample() {
+        if (true) {
+          const z = 30;
+          console.log("Inside block (const):", z);
+          // z = 40;
+
+          if (true) {
+            console.log("Inside deeper block (const):", z); 
+          }
+        }
+        // console.log("Outside block (const):", z); 
+      }
+      // constExample();
+
+      // 4. VAR Hoisting Example
+      function varHoisting() {
+        console.log(a);
+        var a = 5;
+        console.log(a);
+
+        // looks like var a; log(); a = 5; log()
+      }
+      // varHoisting();
+
+      // 5. LET & CONST Hoisting Example (TDZ - Temporal Dead Zone)
+      function letConstHoisting() {
+        // console.log(b); 
+        let b = 10;
+
+        // console.log(c);
+        const c = 15;
+      }
+      // letConstHoisting();
+
+      // 6. Mutability in CONST
+      function mutabilityConst() {
+        const myArray = [1, 2, 3];
+        console.log("Initial array (const):", myArray);
+
+        myArray.push(4);
+        console.log("Modified array (const):", myArray);
+
+        // myArray = [5, 6];
+      }
+
+      // mutabilityConst();
+    </script>
+  </body>
+</html>

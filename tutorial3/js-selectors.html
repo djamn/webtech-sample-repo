@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookstore</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .book {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+        float: left;
+      }
+      .book img {
+        max-width: 100px;
+        display: block;
+        margin-bottom: 10px;
+      }
+      .book .price {
+        color: green;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bookstore</h1>
+
+    <section id="book-list">
+      <div class="book" data-genre="fiction">
+        <img
+          id="image1"
+          src="https://www.developerdrive.com/wp-content/uploads/2013/02/book-cover.jpg"
+          alt="Book 1 Cover"
+        />
+        <h2 class="title">HTML 5</h2>
+        <p class="author">by John Doe</p>
+        <p class="price">$19.99</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+
+      <div class="book" data-genre="non-fiction">
+        <img
+          src="https://www.developerdrive.com/wp-content/uploads/2013/02/book-cover.jpg"
+          alt="Book 2 Cover"
+        />
+        <h2 class="title">HTML 5+</h2>
+        <p class="author">by Jane Smith</p>
+        <p class="price">$25.50</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+
+      <div class="book" data-genre="fiction">
+        <img
+          src="https://www.developerdrive.com/wp-content/uploads/2013/02/book-cover.jpg"
+          alt="Book 3 Cover"
+        />
+        <h2 class="title">HTML 5 Pro</h2>
+        <p class="author">by Mike Johnson</p>
+        <p class="price">$40.75</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+    </section>
+  </body>
+
+  <script>
+    // Information: https://www.w3schools.com/jsref/dom_obj_all.asp
+
+    // var firstBook = document.querySelector(".book");
+
+    // console.log(firstBook); // .dir wenn nur structure
+    // console.log(firstBook.firstChild);
+    // console.log(firstBook.firstElementChild);
+    // console.log(firstBook.lastChild); // ínclude also textnodes that are linebreaks (\n)
+    // console.log(firstBook.lastElementChild);
+    // console.log(firstBook.attributes);
+    // console.log(firstBook.children);
+    // console.log(firstBook.childNodes);
+    // console.log(firstBook.nextSibling);
+    // console.log(firstBook.nextElementSibling);
+    // console.log(firstBook.parentNode);
+    // console.log(firstBook.getAttribute("data-genre"));
+    // console.log(firstBook.nodeType); // https://www.w3schools.com/jsref/prop_node_nodetype.asp
+
+    // var allTitles = document.querySelectorAll(".title");
+    // console.log(allTitles);
+    // console.log(allTitles[1].textContent);
+    // allTitles.forEach((title) => {
+    //   console.log(title.textContent);
+    // });
+
+    // console.log(document.getElementById("image1").attributes["src"].nodeValue);
+    // console.log(document.getElementById("image1").attributes["src"].nodeType); 
+    // console.log(document.getElementById("image1").src);
+
+    // console.log(document.getElementsByTagName("img"));
+    // console.log(document.getElementsByTagName("div").item(2));
+    // console.log(document.getElementsByTagName("div")[2]);
+
+    // console.log(document.getElementsByClassName("buy-btn"));
+    
+    // console.log(document.querySelector(".buy-btn").closest("section"));
+
+    // var lastTitle = document.getElementById("book-list").lastElementChild.querySelector(".title");
+    // lastTitle.textContent = "Changed Book Title";
+    // console.log(lastTitle.textContent);
+  </script>
+</html>
