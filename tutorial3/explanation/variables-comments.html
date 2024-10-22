@@ -1,0 +1,81 @@
+<html>
+  <body>
+    <script>
+      // Hoisting - Javascript automatically moves definitions to the top
+      // For example console.log(x); var x = 5 ==> var x; console.log(x); x = 5;
+
+      // 1. VAR (Function Scope & Hoisting)
+      function varExample() {
+        if (true) {
+          var x = 10;
+          console.log("Inside block (var):", x); // Output: 10
+        }
+        console.log("Outside block (var):", x); // Output: 10 (var is function-scoped, so accessible here)
+      }
+      varExample();
+
+      // 2. LET (Block Scope & No Hoisting)
+      function letExample() {
+        if (true) {
+          let y = 20;
+          if (true) {
+            console.log("Inside deeper block (let):", y); // Output: 20
+          }
+          console.log("Inside block (let):", y); // Output: 20
+        }
+        // console.log("Outside block (let):", y);  // Error: y is not defined (let is block-scoped)
+      }
+      letExample();
+
+      // 3. CONST (Block Scope & Immutable Reference)
+      function constExample() {
+        if (true) {
+          const z = 30;
+          console.log("Inside block (const):", z); // Output: 30
+          // z = 40;  // Error: Assignment to constant variable (const cannot be reassigned)
+
+          if (true) {
+            console.log("Inside deeper block (const):", z); // Output: 30
+          }
+        }
+        // console.log("Outside block (const):", z);  // Error: z is not defined (const is block-scoped)
+      }
+      constExample();
+
+      // 4. VAR Hoisting Example
+      function varHoisting() {
+        console.log(a); // Output: undefined (a is hoisted, but initialized to undefined)
+        var a = 5;
+        console.log(a); // Output: 5 (after assignment)
+
+        // looks like var a; log(); a = 5; log()
+      }
+      varHoisting();
+
+      // 5. LET & CONST Hoisting Example (TDZ - Temporal Dead Zone)
+      function letConstHoisting() {
+        // console.log(b);  // Error: Cannot access 'b' before initialization (let has a TDZ)
+        let b = 10;
+
+        // console.log(c);  // Error: Cannot access 'c' before initialization (const has a TDZ)
+        const c = 15;
+      }
+      letConstHoisting();
+
+      // 6. Mutability in CONST
+      function mutabilityConst() {
+        const myArray = [1, 2, 3];
+        console.log("Initial array (const):", myArray); // Output: [1, 2, 3]
+
+        // Even though myArray is declared with const, we can modify its content
+        myArray.push(4);
+        console.log("Modified array (const):", myArray); // Output: [1, 2, 3, 4]
+
+        // But we cannot reassign a const variable
+        // myArray = [5, 6];  // Error: Assignment to constant variable
+      }
+
+      mutabilityConst();
+    </script>
+  </body>
+</html>

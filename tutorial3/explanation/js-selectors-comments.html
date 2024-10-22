@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookstore</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .book {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+        float: left;
+      }
+      .book img {
+        max-width: 100px;
+        display: block;
+        margin-bottom: 10px;
+      }
+      .book .price {
+        color: green;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bookstore</h1>
+
+    <section id="book-list">
+      <div class="book" data-genre="fiction">
+        <img
+          id="image1"
+          src="https://www.developerdrive.com/wp-content/uploads/2013/02/book-cover.jpg"
+          alt="Book 1 Cover"
+        />
+        <h2 class="title">HTML 5</h2>
+        <p class="author">by John Doe</p>
+        <p class="price">$19.99</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+
+      <div class="book" data-genre="non-fiction">
+        <img
+          src="https://www.developerdrive.com/wp-content/uploads/2013/02/book-cover.jpg"
+          alt="Book 2 Cover"
+        />
+        <h2 class="title">HTML 5+</h2>
+        <p class="author">by Jane Smith</p>
+        <p class="price">$25.50</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+
+      <div class="book" data-genre="fiction">
+        <img
+          src="https://www.developerdrive.com/wp-content/uploads/2013/02/book-cover.jpg"
+          alt="Book 3 Cover"
+        />
+        <h2 class="title">HTML 5 Pro</h2>
+        <p class="author">by Mike Johnson</p>
+        <p class="price">$40.75</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+    </section>
+  </body>
+
+  <script>
+    // Information: https://www.w3schools.com/jsref/dom_obj_all.asp
+    // https://www.w3schools.com/jsref/met_element_queryselector.asp
+
+    var firstBook = document.querySelector(".book"); // Selects the first element with the class "book"
+
+    console.log(firstBook); // Logs the entire first "book" element
+    console.log(firstBook.children); // Logs all child elements inside the first book element
+    console.log(firstBook.childNodes); // Logs all child nodes (including text nodes)
+    console.log(firstBook.firstChild); // Logs the first child of the first book, which could be a text node (e.g., line break)
+    console.log(firstBook.firstElementChild); // Logs the first child element, ignoring text nodes
+    console.log(firstBook.lastChild); // Logs the last child of the first book, could be a text node
+    console.log(firstBook.lastElementChild); // Logs the last child element, ignoring text nodes
+    console.log(firstBook.attributes); // Logs all attributes of the first book element
+    console.log(firstBook.nextSibling); // Logs the next sibling node, could be a text node
+    console.log(firstBook.nextElementSibling); // Logs the next sibling element, ignoring text nodes
+    console.log(firstBook.parentNode); // Logs the parent node of the first book element
+    console.log(firstBook.getAttribute("data-genre")); // Logs the value of the "data-genre" attribute
+    console.log(firstBook.nodeType); // Logs the type of node (1 = element node)
+
+    var allTitles = document.querySelectorAll(".title"); // Selects all elements with the class "title"
+    console.log(allTitles); // Logs a NodeList of all the titles
+    console.log(allTitles[1].textContent); // Logs the text content of the second title
+    allTitles.forEach((title) => {
+      console.log(title.textContent); // Logs the text content of each title
+    });
+
+    console.log(document.getElementById("image1").attributes["src"].nodeValue); // Logs the value of the "src" attribute of the element with id="image1"
+    console.log(document.getElementById("image1").attributes["src"].nodeType); // Logs the type of node for the "src" attribute (2 = attribute node)
+    console.log(document.getElementById("image1").src); // Logs the full URL of the "src" attribute
+
+    console.log(document.getElementsByTagName("img")); // Logs a live HTMLCollection of all <img> elements
+    console.log(document.getElementsByTagName("div").item(2)); // Logs the third <div> element (index 2)
+    console.log(document.getElementsByTagName("div")[2]); // Same as the previous line but using array-like syntax
+
+    console.log(document.getElementsByClassName("buy-btn")); // Logs a live HTMLCollection of all elements with the class "buy-btn"
+
+    console.log(document.querySelector(".buy-btn").closest("section")); // Logs the closest ancestor <section> element to the first ".buy-btn"
+
+    var lastTitle = document
+      .getElementById("book-list")
+      .lastElementChild.querySelector(".title"); // Selects the last title in the book list
+    lastTitle.textContent = "Changed Book Title"; // Changes the text content of the last title
+    console.log(lastTitle.textContent); // Logs the updated text content
+  </script>
+</html>
