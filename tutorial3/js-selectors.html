@@ -67,46 +67,55 @@
   </body>
 
   <script>
-    // Information: https://www.w3schools.com/jsref/dom_obj_all.asp
+    // https://www.w3schools.com/jsref/dom_obj_all.asp
     // https://www.w3schools.com/jsref/met_element_queryselector.asp
 
-    // var firstBook = document.querySelector(".book");
+    var firstBook = document.querySelector(".book");
 
-    // console.log(firstBook); // .dir wenn nur structure
-    // console.log(firstBook.children);
-    // console.log(firstBook.childNodes);
-    // console.log(firstBook.firstChild);
-    // console.log(firstBook.firstElementChild);
-    // console.log(firstBook.lastChild); // ínclude also textnodes that are linebreaks (\n)
-    // console.log(firstBook.lastElementChild);
-    // console.log(firstBook.attributes);
-    // console.log(firstBook.nextSibling);
-    // console.log(firstBook.nextElementSibling);
-    // console.log(firstBook.parentNode);
-    // console.log(firstBook.getAttribute("data-genre"));
-    // console.log(firstBook.nodeType); // https://www.w3schools.com/jsref/prop_node_nodetype.asp
+    console.log(firstBook);
+    console.log(firstBook.children);
+    console.log(firstBook.childNodes);
+    console.log(firstBook.firstChild);
+    console.log(firstBook.firstElementChild);
+    console.log(firstBook.lastChild);
+    console.log(firstBook.lastElementChild);
+    console.log(firstBook.attributes);
+    console.log(firstBook.nextSibling);
+    console.log(firstBook.nextElementSibling);
+    console.log(firstBook.parentNode);
+    console.log(firstBook.getAttribute("data-genre"));
+    // https://www.w3schools.com/jsref/prop_node_nodetype.asp
+    console.log(firstBook.nodeType);
+    console.log(firstBook.innerHTML);
 
-    // var allTitles = document.querySelectorAll(".title");
-    // console.log(allTitles);
-    // console.log(allTitles[1].textContent);
-    // allTitles.forEach((title) => {
-    // console.log(title.textContent);
-    // });
+    const firstTitleOfFirstBook = firstBook.querySelector(".title");
+    console.log(firstTitleOfFirstBook.firstChild);
+    console.log(firstTitleOfFirstBook.querySelector(".title").firstChild.nodeType);
+    console.log(firstTitleOfFirstBook.firstChild.textContent);
 
-    // console.log(document.getElementById("image1").attributes["src"].nodeValue);
-    // console.log(document.getElementById("image1").attributes["src"].nodeType);
-    // console.log(document.getElementById("image1").src);
+    var allTitles = document.querySelectorAll(".title");
+    console.log(allTitles);
+    console.log(allTitles[1].textContent);
+    allTitles.forEach((title) => {
+      console.log(title.textContent);
+    });
 
-    // console.log(document.getElementsByTagName("img"));
-    // console.log(document.getElementsByTagName("div").item(2));
-    // console.log(document.getElementsByTagName("div")[2]);
+    console.log(document.getElementById("image1").attributes["src"].nodeValue);
+    console.log(document.getElementById("image1").attributes["src"].nodeType);
+    console.log(document.getElementById("image1").src);
 
-    // console.log(document.getElementsByClassName("buy-btn"));
+    console.log(document.getElementsByTagName("div"));
+    console.log(document.getElementsByTagName("div").item(2));
+    console.log(document.getElementsByTagName("div")[2]);
 
-    // console.log(document.querySelector(".buy-btn").closest("section"));
+    console.log(document.getElementsByClassName("buy-btn"));
+    console.log(document.querySelector(".buy-btn").closest("section"));
 
-    // var lastTitle = document.getElementById("book-list").lastElementChild.querySelector(".title");
-    // lastTitle.textContent = "Changed Book Title";
-    // console.log(lastTitle.textContent);
+    var lastTitle = document
+      .getElementById("book-list")
+      .lastElementChild.querySelector(".title");
+
+    lastTitle.textContent = "Changed Book Title";
+    console.log(lastTitle.textContent);
   </script>
 </html>

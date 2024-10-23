@@ -70,23 +70,34 @@
     // Information: https://www.w3schools.com/jsref/dom_obj_all.asp
     // https://www.w3schools.com/jsref/met_element_queryselector.asp
 
-    var firstBook = document.querySelector(".book"); // Selects the first element with the class "book"
+    var firstBook = document.querySelector(".book"); // Selects always first element with the specific css selector (here class "book")
 
-    console.log(firstBook); // Logs the entire first "book" element
+    console.log(firstBook); // Logs the entire first "book" element which you selected before (there you can see all properties)
+    // Hint: Sometimes it shows the whole html element in the console - Just reload and it changes back to the properties overview. If you only want to see the properties overview, you can use console.dir() instead of log()
+
     console.log(firstBook.children); // Logs all child elements inside the first book element
-    console.log(firstBook.childNodes); // Logs all child nodes (including text nodes)
+    console.log(firstBook.childNodes); // Logs all child nodes (including text nodes that equal linebreaks)
     console.log(firstBook.firstChild); // Logs the first child of the first book, which could be a text node (e.g., line break)
-    console.log(firstBook.firstElementChild); // Logs the first child element, ignoring text nodes
+    console.log(firstBook.firstElementChild); // Logs the first child element (like it is visible in the html structure), ignoring text nodes
     console.log(firstBook.lastChild); // Logs the last child of the first book, could be a text node
     console.log(firstBook.lastElementChild); // Logs the last child element, ignoring text nodes
-    console.log(firstBook.attributes); // Logs all attributes of the first book element
+    console.log(firstBook.attributes); // Logs all specified attributes of the first book element (here: class, data-genre)
     console.log(firstBook.nextSibling); // Logs the next sibling node, could be a text node
     console.log(firstBook.nextElementSibling); // Logs the next sibling element, ignoring text nodes
     console.log(firstBook.parentNode); // Logs the parent node of the first book element
     console.log(firstBook.getAttribute("data-genre")); // Logs the value of the "data-genre" attribute
+    // Hint: Node Types see: https://www.w3schools.com/jsref/prop_node_nodetype.asp
     console.log(firstBook.nodeType); // Logs the type of node (1 = element node)
+    console.log(firstBook.innerHTML); // Logs the whole html structure of the first book
+    // firstBook.innerHTML = "<b>Hello World</b>" // Change selected html structure with new html code
 
-    var allTitles = document.querySelectorAll(".title"); // Selects all elements with the class "title"
+    const firstTitleOfFirstBook = firstBook.querySelector(".title");
+    console.log(firstTitleOfFirstBook.firstChild); // Logs first child of the first title occurence -> Here it is "HTML 5" 3
+    console.log(firstTitleOfFirstBook.querySelector(".title").firstChild.nodeType); // Selects the nodeType of the first title occurence -> Here it is 3 (for text)
+    console.log(firstTitleOfFirstBook.firstChild.textContent); // Returns the actual text as string
+    // Hint: Appending .nodeType would be undefined when accessed on .textContent because .textContent returns a string, not a DOM node, and strings don't have a .nodeType property
+
+    var allTitles = document.querySelectorAll(".title"); // Selects all(!) elements with a specified css selector (here: class "title")
     console.log(allTitles); // Logs a NodeList of all the titles
     console.log(allTitles[1].textContent); // Logs the text content of the second title
     allTitles.forEach((title) => {
@@ -97,17 +108,18 @@
     console.log(document.getElementById("image1").attributes["src"].nodeType); // Logs the type of node for the "src" attribute (2 = attribute node)
     console.log(document.getElementById("image1").src); // Logs the full URL of the "src" attribute
 
-    console.log(document.getElementsByTagName("img")); // Logs a live HTMLCollection of all <img> elements
+    console.log(document.getElementsByTagName("div")); // Logs all <div> elements (accessible like an array)
     console.log(document.getElementsByTagName("div").item(2)); // Logs the third <div> element (index 2)
     console.log(document.getElementsByTagName("div")[2]); // Same as the previous line but using array-like syntax
 
-    console.log(document.getElementsByClassName("buy-btn")); // Logs a live HTMLCollection of all elements with the class "buy-btn"
-
+    console.log(document.getElementsByClassName("buy-btn")); // Logs all elements with the class "buy-btn"
     console.log(document.querySelector(".buy-btn").closest("section")); // Logs the closest ancestor <section> element to the first ".buy-btn"
 
     var lastTitle = document
       .getElementById("book-list")
       .lastElementChild.querySelector(".title"); // Selects the last title in the book list
+    // More detailed: selects the element with the id book-list -> gets the last element one hierarchy lower (child) -> then searches in this child element for the first occurence of the class "title"
+    
     lastTitle.textContent = "Changed Book Title"; // Changes the text content of the last title
     console.log(lastTitle.textContent); // Logs the updated text content
   </script>

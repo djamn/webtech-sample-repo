@@ -1,6 +1,9 @@
 <html>
   <body>
     <script>
+      // Hoisting - Javascript automatically moves definitions to the top
+      // For example console.log(x); var x = 5 ==> var x; console.log(x); x = 5;
+
       // 1. VAR (Function Scope & Hoisting)
       function varExample() {
         if (true) {
@@ -9,7 +12,7 @@
         }
         console.log("Outside block (var):", x);
       }
-      // varExample();
+      varExample();
 
       // 2. LET (Block Scope & No Hoisting)
       function letExample() {
@@ -18,46 +21,44 @@
           if (true) {
             console.log("Inside deeper block (let):", y); 
           }
-          console.log("Inside block (let):", y); 
+          console.log("Inside block (let):", y);
         }
-        // console.log("Outside block (let):", y);
+        // console.log("Outside block (let):", y); 
       }
-      // letExample();
+      letExample();
 
       // 3. CONST (Block Scope & Immutable Reference)
       function constExample() {
         if (true) {
           const z = 30;
-          console.log("Inside block (const):", z);
-          // z = 40;
+          console.log("Inside block (const):", z); 
+          // z = 40; 
 
           if (true) {
-            console.log("Inside deeper block (const):", z); 
+            console.log("Inside deeper block (const):", z);
           }
         }
-        // console.log("Outside block (const):", z); 
+        // console.log("Outside block (const):", z);
       }
-      // constExample();
+      constExample();
 
       // 4. VAR Hoisting Example
       function varHoisting() {
         console.log(a);
         var a = 5;
         console.log(a);
-
-        // looks like var a; log(); a = 5; log()
       }
-      // varHoisting();
+      varHoisting();
 
       // 5. LET & CONST Hoisting Example (TDZ - Temporal Dead Zone)
       function letConstHoisting() {
-        // console.log(b); 
+        // console.log(b);  
         let b = 10;
 
-        // console.log(c);
+        // console.log(c);  
         const c = 15;
       }
-      // letConstHoisting();
+      letConstHoisting();
 
       // 6. Mutability in CONST
       function mutabilityConst() {
@@ -65,12 +66,24 @@
         console.log("Initial array (const):", myArray);
 
         myArray.push(4);
-        console.log("Modified array (const):", myArray);
+        console.log("Modified array (const):", myArray); 
 
-        // myArray = [5, 6];
+        // myArray = [5, 6];  
       }
 
-      // mutabilityConst();
+      mutabilityConst();
+
+      function  someFunct(name) {
+        let test, test2 = 123;   
+
+        let a = b = 123; 
+      }
+      someFunct();
+      // console.log(test2);    
+      // console.log(test);     
+      // console.log(a);        
+      // console.log(b);     
+
     </script>
   </body>
 </html>

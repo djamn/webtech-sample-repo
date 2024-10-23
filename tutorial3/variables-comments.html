@@ -10,7 +10,7 @@
           var x = 10;
           console.log("Inside block (var):", x); // Output: 10
         }
-        console.log("Outside block (var):", x); // Output: 10 (var is function-scoped, so accessible here)
+        console.log("Outside block (var):", x); // Output: 10 (var is function-scoped and is accessible everywhere in the function (not outside))
       }
       varExample();
 
@@ -23,7 +23,7 @@
           }
           console.log("Inside block (let):", y); // Output: 20
         }
-        // console.log("Outside block (let):", y);  // Error: y is not defined (let is block-scoped)
+        // console.log("Outside block (let):", y);  // Error: y is not defined (let is block-scoped, cannot be accessed in parent hierarchy)
       }
       letExample();
 
@@ -44,11 +44,11 @@
 
       // 4. VAR Hoisting Example
       function varHoisting() {
-        console.log(a); // Output: undefined (a is hoisted, but initialized to undefined)
+        console.log(a); // Output: undefined (a is hoisted, but initialized to undefined => no error)
         var a = 5;
         console.log(a); // Output: 5 (after assignment)
 
-        // looks like var a; log(); a = 5; log()
+        // Looks like var a; log(); a = 5; log()
       }
       varHoisting();
 
@@ -76,6 +76,18 @@
       }
 
       mutabilityConst();
+
+      function  someFunct(name) {
+        let test, test2 = 123;    // 2x same let variable
+
+        let a = b = 123; // a is let variable, b is global variable. Let is only accessible in block scope
+      }
+      someFunct();
+      // console.log(test2);    // since let is not accessible in parent hierarchy => error
+      // console.log(test);     // since let is not accessible in parent hierarchy => error
+      // console.log(a);         // let => not accessible => error
+      // console.log(b);        // b is global => accessible 
+
     </script>
   </body>
 </html>
