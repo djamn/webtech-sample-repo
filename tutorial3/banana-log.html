@@ -1,0 +1,27 @@
+<html>
+  <body>
+    <script>
+      console.log(("b" + "a" + +"a" + "a").toLowerCase()); // Prints banana
+
+      // Why?
+      // 'b'+ 'a' -> will be appended together => ba
+      // next + is the same as before, it tells that another sequence will follow/should be appended
+      // + 'a' -> Unary Plus Operator (Trys to convert its operand to a number - See examples) -> Cannot convert a String to number => NaN (not a number)
+      // another 'a' gets appended
+
+      // Whole string: baNaNa
+      // With toLowerCase all letters will be converted to lower case letters => banana
+
+      // Unary Plus Operator
+      const x = 1;
+      const y = -1;
+
+      console.log(+x); // 1
+      console.log(+y); // -1
+      console.log(+""); // 0
+      console.log(+true); // 1
+      console.log(+false); // 0
+      console.log(+"string"); // NaN
+    </script>
+  </body>
+</html>
