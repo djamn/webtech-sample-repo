@@ -1,0 +1,57 @@
+<html>
+  <body>
+    <script>
+      const fetchData = () => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const success = true; // Simulate success or failure
+            if (success) {
+              resolve({ id: 1, name: "Alice" }); // resolve => when success (.then)
+            } else {
+              reject("Failed to fetch data"); // reject => when error (.catch)
+            }
+          }, 2000);
+        });
+      };
+
+      fetchData()
+        .then((data) => {
+          // you can chain multiple thens
+          console.log("Data received:", data);
+        })
+        .catch((error) => {
+          console.log("Error:", error);
+        });
+    </script>
+
+    <script>
+      // Chaining with .then
+      const fetchUser = () => {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve({ id: 1, name: "Alice" }), 1000);
+        });
+      };
+
+      const fetchOrders = (userId) => {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(["Order1", "Order2"]), 1000);
+        });
+      };
+
+      fetchUser()
+        .then((user) => {
+          console.log("User fetched:", user);
+          return fetchOrders(user.id); // Return promise and wait for the next then
+        })
+        .then((orders) => {
+          console.log("Orders fetched:", orders);
+        })
+        .catch((error) => {
+          console.log("Error:", error);
+        });
+      // Output after 2 seconds:
+      // User fetched: { id: 1, name: 'Alice' }
+      // Orders fetched: ['Order1', 'Order2']
+    </script>
+  </body>
+</html>

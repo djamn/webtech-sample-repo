@@ -1,0 +1,38 @@
+<html>
+  <body>
+    <script>
+      // Promise.all waits for multiple promises to complete in parallel and returns an array of their results
+
+      const fetchComments = () => {
+        return new Promise((resolve) =>
+          setTimeout(() => resolve(["Comment1", "Comment2"]), 1500)
+        );
+      };
+
+      const fetchLikes = () => {
+        return new Promise((resolve) => setTimeout(() => resolve(10), 500));
+      };
+
+      async function fetchPostData() {
+        try {
+          // Waiting for all promises and then handling the returned values
+          // First return value will be stored in comments variable, the other in likes
+          const [comments, likes] = await Promise.all([
+            fetchComments(),
+            fetchLikes(),
+          ]);
+          console.log("Comments:", comments);
+          console.log("Likes:", likes);
+        } catch (error) {
+          console.log("Error:", error);
+        }
+      }
+
+      fetchPostData();
+
+      // Output after 1.5 seconds:
+      // Comments: ['Comment1', 'Comment2']
+      // Likes: 10
+    </script>
+  </body>
+</html>
