@@ -1,0 +1,34 @@
+<html>
+  <body>
+    <script>
+      // Transforms a function with multiple arguments into a sequence of nested functions which all only take a single argument
+
+      // Un-curried function
+      function add(a, b) {
+        return a + b;
+      }
+
+      // Curried version of add
+      function curriedAdd(a) {
+        return function (b) {
+          return a + b;
+        };
+      }
+
+      console.log(add(2, 3)); // Output: 5
+      console.log(curriedAdd(2)(3)); // Output: 5
+      // same as:
+      const add1 = curriedAdd(2);
+      console.log(add1(3));
+
+      // Other version
+      let curriedAddShort = a => b => a + b;
+      // Same as:
+      const curriedAddLong = function (a) {
+        return function (b) {
+          return a + b;
+        };
+      };
+    </script>
+  </body>
+</html>

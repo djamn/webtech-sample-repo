@@ -1,0 +1,22 @@
+<html>
+  <body>
+    <script>
+      // First Class Functions - Functions can be assigned to variables, passed as arguments to other functions or returned from functions
+      // Short: Can occur anywhere where variables can occur (assignment, arguments, return value, in data structures)
+
+      // Higher Order Function - Takes one/morge functions as arguments or return a function
+
+      // Assigning a function to a variable
+      const greet = function (name) {
+        return `Hello, ${name}!`;
+      };
+
+      // Passing a function as an argument
+      function welcomeMessage(greetingFunction, userName) {
+        console.log(greetingFunction(userName));
+      }
+
+      welcomeMessage(greet, "Max"); // Output: Hello, Max!
+    </script>
+  </body>
+</html>

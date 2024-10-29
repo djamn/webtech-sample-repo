@@ -1,0 +1,102 @@
+<html>
+  <body>
+    <script>
+      // This in Regular Functions
+      // In regular functions, this usually refers to the object that called the function
+      // In the example below, this refers to the instance of the Person object
+      function Person(name) {
+        // Constructor
+        this.name = name;
+        this.greet = function () {
+          console.log(`Hello, my name is ${this.name}`);
+        };
+      }
+
+      // In person.greet(), this refers to person, so this.name correctly outputs "Alice"
+      const person = new Person("Alice");
+      person.greet(); // Output: Hello, my name is Alice
+    </script>
+
+    <script>
+      // Losing this Context in Regular Functions
+      // In cases where a function is called independently (not as a method of an object), this can lose context
+      function Person2(name) {
+        this.name = name;
+        this.greet = function () {
+          console.log(`Hello, my name is ${this.name}`);
+        };
+      }
+
+      // Here, greetFn is assigned to person.greet, but when greetFn is called, this is no longer bound to person
+      // It defaults to the global this (or undefined in strict mode), so this.name is undefined
+      const person2 = new Person2("Alice");
+      const greetFn = person2.greet;
+      greetFn(); // Output: Hello, my name is undefined
+    </script>
+
+    <script>
+      // Using .bind() to fix this Context (same as event listeners)
+      // To keep the this context when passing a method, use .bind() to explicitly set the this value
+      function Person3(name) {
+        this.name = name;
+        this.greet = function () {
+          console.log(`Hello, my name is ${this.name}`);
+        };
+      }
+
+      // Using person.greet.bind(person) ensures that this inside greet always refers to person, even when greetFn is called independently
+      const person3 = new Person3("Alice");
+      const greetFn3 = person3.greet.bind(person3); // Binds `this` to `person`
+      greetFn3(); // Output: Hello, my name is Alice
+    </script>
+
+    <script>
+      // Arrow Functions and this
+      // Arrow functions do not have their own this context
+      // Instead, they inherit this from the surrounding lexical scope (the environment in which they were defined)
+      function Person4(name) {
+        this.name = name;
+        this.greet = () => {
+          console.log(`Hello, my name is ${this.name}`);
+        };
+      }
+
+      // Since greet is an arrow function, it doesn't have its own this
+      // It inherits this from the context where Person was instantiated, so this correctly refers to person and outputs "Alice"
+      const person4 = new Person4("Alice");
+      person4.greet(); // Output: Hello, my name is Alice
+    </script>
+
+    <script>
+      // Using .call(), .apply(), and .bind() with Regular Functions
+      // JavaScript provides three methods (call, apply, and bind) to explicitly set this context in functions
+
+      function introduce(city, country) {
+        console.log(`Hello, my name is ${this.name} from ${city}, ${country}`);
+      }
+
+      const person5 = { name: "Alice" };
+
+      introduce.call(person5, "New York", "USA"); // Output: Hello, my name is Alice from New York, USA
+
+      introduce.apply(person5, ["Paris", "France"]); // Output: Hello, my name is Alice from Paris, France
+
+      const introduceAlice = introduce.bind(person5, "London", "UK");
+      introduceAlice(); // Output: Hello, my name is Alice from London, UK
+    </script>
+
+    <script>
+      //  Arrow Functions Cannot be Used with .bind(), .call(), or .apply()
+      const person6 = {
+        name: "Alice",
+        greet: () => {
+          console.log(`Hello, my name is ${this.name}`);
+        },
+      };
+
+      // Here, greet is an arrow function, so this does not refer to person
+      // It takes this from the surrounding scope, which may be the global scope, causing this.name to be undefined (or an empty string in strict mode)
+      person6.greet(); // Output: Hello, my name is undefined (or an empty string)
+    </script>
+  </body>
+</html>

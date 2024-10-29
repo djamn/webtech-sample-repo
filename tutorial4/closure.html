@@ -1,0 +1,43 @@
+<html>
+  <body>
+    <script>
+      // Closure - Define a function inside another function
+      // Inner Function has access to the other function (lexical scoping) but not the other way
+
+      function createCounter() {
+        let count = 0; // Enclosed variable
+
+        // Also possible with arrow function
+        return function () {
+          count += 1;
+          return count;
+        };
+      }
+
+      const counter = createCounter();
+      console.log(counter()); // Output: 1
+      console.log(counter()); // Output: 2
+      console.log(counter()); // Output: 3
+
+
+
+      function outer() {
+        let message = "Outer message"
+
+        function inner() {
+          console.log(message);
+        }        
+
+        return inner;
+      }
+
+      let result = outer()    // Result equals inner function
+      console.log(result);
+      result(); // Since result equals inner function, we can call it => It prints the message from the outer function
+
+
+      
+      
+    </script>
+  </body>
+</html>
