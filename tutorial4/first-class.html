@@ -11,6 +11,9 @@
         return `Hello, ${name}!`;
       };
 
+      console.log(greet);
+      console.log(greet("Peter"));
+
       // Passing a function as an argument
       function welcomeMessage(greetingFunction, userName) {
         console.log(greetingFunction(userName));

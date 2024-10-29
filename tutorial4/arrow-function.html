@@ -9,7 +9,10 @@
       }
 
       // Arrow function equivalent
-      const addArrow = (a, b) => a + b;
+      const addArrow = (a, b) => {
+        a + b;
+      };
+      console.log(addArrow);
 
       console.log(add(3, 4)); // Output: 7
       console.log(addArrow(3, 4)); // Output: 7
