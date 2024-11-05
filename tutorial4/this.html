@@ -1,11 +1,11 @@
 <html>
   <body>
+    <button id="button">Test</button>
     <script>
       // This in Regular Functions
       // In regular functions, this usually refers to the object that called the function
-      // In the example below, this refers to the instance of the Person object
+      // In the example below, this refers to the specific instance of the Person object otherwise it would be a local variable
       function Person(name) {
-        // Constructor
         this.name = name;
         this.greet = function () {
           console.log(`Hello, my name is ${this.name}`);
@@ -51,26 +51,8 @@
     </script>
 
     <script>
-      // Arrow Functions and this
-      // Arrow functions do not have their own this context
-      // Instead, they inherit this from the surrounding lexical scope (the environment in which they were defined)
-      function Person4(name) {
-        this.name = name;
-        this.greet = () => {
-          console.log(`Hello, my name is ${this.name}`);
-        };
-      }
-
-      // Since greet is an arrow function, it doesn't have its own this
-      // It inherits this from the context where Person was instantiated, so this correctly refers to person and outputs "Alice"
-      const person4 = new Person4("Alice");
-      person4.greet(); // Output: Hello, my name is Alice
-    </script>
-
-    <script>
       // Using .call(), .apply(), and .bind() with Regular Functions
       // JavaScript provides three methods (call, apply, and bind) to explicitly set this context in functions
-
       function introduce(city, country) {
         console.log(`Hello, my name is ${this.name} from ${city}, ${country}`);
       }
@@ -86,17 +68,24 @@
     </script>
 
     <script>
-      //  Arrow Functions Cannot be Used with .bind(), .call(), or .apply()
+      // Arrow functions do not have their own this context
+      // Instead, they inherit this from the surrounding lexical scope (the environment in which they were defined)
+      // Arrow Functions cannot be used with .bind(), .call(), or .apply()
       const person6 = {
         name: "Alice",
-        greet: () => {
+        greet: function () {
+          console.log(`Hello, my name is ${this.name}`);
+        },
+        greet2: () => {
           console.log(`Hello, my name is ${this.name}`);
         },
       };
 
-      // Here, greet is an arrow function, so this does not refer to person
-      // It takes this from the surrounding scope, which may be the global scope, causing this.name to be undefined (or an empty string in strict mode)
-      person6.greet(); // Output: Hello, my name is undefined (or an empty string)
+      // Greet calles person6, so the 'this' inside greet refers to the person6 object
+      person6.greet(); // Output: Hello, my name is Alice
+
+      // Greet2  takes 'this' from the surrounding scope, which may be the global scope, causing this.name to be undefined (or an empty string in strict mode)
+      person6.greet2(); // Output: Hello, my name is undefined (or an empty string)
     </script>
   </body>
 </html>

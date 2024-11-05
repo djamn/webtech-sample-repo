@@ -16,10 +16,13 @@
       }
 
       console.log(add(2, 3)); // Output: 5
-      console.log(curriedAdd(2)(3)); // Output: 5
-      // same as:
+
       const add1 = curriedAdd(2);
       console.log(add1(3));
+
+      // Same as:
+      console.log(curriedAdd(2)(3)); // Output: 5
+      
 
       // Other version
       let curriedAddShort = a => b => a + b;

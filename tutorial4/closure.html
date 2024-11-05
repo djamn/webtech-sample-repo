@@ -2,14 +2,16 @@
   <body>
     <script>
       // Closure - Define a function inside another function
-      // Inner Function has access to the other function (lexical scoping) but not the other was
+      // Inner Function has access to the other function (lexical scoping) but not the other way
 
       function outer() {
         let message = "Outer message";
 
         function inner() {
+          var test = 5;
           console.log(message);
         }
+        // console.log(test); // Not possible since outer function is not aware of variables in inner function except global ones
 
         return inner;
       }
