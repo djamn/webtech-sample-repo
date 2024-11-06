@@ -1,0 +1,32 @@
+<html>
+  <body>
+    <script>
+      // (<parameter>) => {<function>}
+      // (Also possible with no parameter () and multiple lines as function {})
+
+      function add(a, b) {
+        return a + b;
+      }
+
+      // Arrow function equivalent
+      const addArrow = (a, b) => {
+        return a + b;
+      };
+
+      console.log(addArrow);
+      console.log(add(3, 4)); // Output: 7
+      console.log(addArrow(3, 4)); // Output: 7
+
+      // Without brackets when only one parameter exists:
+      function greet(name) {
+        return `Hello, ${name}!`;
+      }
+
+      // Arrow function equivalent
+      const greetArrow = (name) => `Hello, ${name}!`;
+
+      console.log(greet("Alice")); // Output: Hello, Alice!
+      console.log(greetArrow("Alice")); // Output: Hello, Alice!
+    </script>
+  </body>
+</html>

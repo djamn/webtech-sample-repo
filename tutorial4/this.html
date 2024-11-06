@@ -1,0 +1,92 @@
+<html>
+  <body>
+    <button id="button">Test</button>
+    <script>
+      // This in Regular Functions
+      // In regular functions, this usually refers to the object that called the function
+      // In the example below, this refers to the specific instance of the Person object otherwise it would be a local variable
+      function PersonA(name) {
+        this.name = name;
+        this.greet = function () {
+          console.log(`Hello, my name is ${this.name}`);
+        };
+      }
+
+      // In person.greet(), this refers to person, so this.name correctly outputs "Alice"
+      const person1 = new PersonA("Alice");
+      person1.greet(); // Output: Hello, my name is Alice
+    </script>
+
+    <script>
+      // Losing this Context in Regular Functions
+      // In cases where a function is called independently (not as a method of an object), this can lose context
+      function PersonB(name) {
+        this.name = name;
+        this.greet = function () {
+          console.log(`Hello, my name is ${this.name}`);
+        };
+      }
+
+      // Here, greetFn is assigned to person.greet, but when greetFn is called, this is no longer bound to person
+      // It defaults to the global this (or undefined in strict mode), so this.name is undefined
+      const person2 = new PersonB("Alice");
+      const greetFn = person2.greet;
+      greetFn(); // Output: Hello, my name is undefined
+    </script>
+
+    <script>
+      // Using .bind() to fix this Context (same as event listeners)
+      // To keep the this context when passing a method, use .bind() to explicitly set the this value
+      function PersonC(name) {
+        this.name = name;
+        this.greet = function () {
+          console.log(`Hello, my name is ${this.name}`);
+        };
+      }
+
+      // Using person.greet.bind(person) ensures that this inside greet always refers to person, even when greetFn is called independently
+      const person3 = new PersonC("Alice");
+      const greetFn3 = person3.greet.bind(person3); // Binds `this` to `person`
+      greetFn3(); // Output: Hello, my name is Alice
+    </script>
+
+    <script>
+      // Using .call(), .apply(), and .bind() with Regular Functions
+      // JavaScript provides three methods (call, apply, and bind) to explicitly set this context in functions
+      function introduce(city, country) {
+        console.log(`Hello, my name is ${this.name} from ${city}, ${country}`);
+      }
+
+      const person4 = { name: "Alice" };
+
+      introduce.call(person4, "New York", "USA"); // Output: Hello, my name is Alice from New York, USA
+
+      introduce.apply(person4, ["Paris", "France"]); // Output: Hello, my name is Alice from Paris, France
+
+      const introduceAlice = introduce.bind(person4, "London", "UK");
+      introduceAlice(); // Output: Hello, my name is Alice from London, UK
+    </script>
+
+    <script>
+      // Arrow functions do not have their own this context
+      // Instead, they inherit this from the surrounding lexical scope (the environment in which they were defined - Here: Global Context, not person6)
+      // Arrow Functions cannot be used with .bind(), .call(), or .apply()
+      const person5 = {
+        name: "Alice",
+        greet: function () {
+          console.log(`Hello, my name is ${this.name}`);
+        },
+        greet2: () => {
+          console.log(`Hello, my name is ${this.name}`);
+        },
+      };
+
+      // Greet calles person6, so the 'this' inside greet refers to the person6 object
+      person5.greet(); // Output: Hello, my name is Alice
+
+      // Greet2  takes 'this' from the surrounding scope, which may be the global scope, causing this.name to be undefined (or an empty string in strict mode)
+      person5.greet2(); // Output: Hello, my name is undefined (or an empty string)
+      person5.greet2.call(person5); // Output: Hello, my name is undefined (or an empty string)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+  <body>
+    <script>
+      // Objects in JavaScript are collections of key-value pairs
+      // They can store data and functions, making them very versatile for modeling data
+
+      // Creating a JavaScript object
+      const personVar = {
+        name: "John",
+        age: 30,
+        greet: function () {
+          console.log(`Hello, my name is ${this.name}`);
+        },
+      };
+
+      // Accessing object properties
+      console.log(personVar.name); // Output: John
+      console.log(personVar.age); // Output: 30
+
+      // Calling a method
+      personVar.greet(); // Output: Hello, my name is John
+
+      // Also possible
+      let personOther = new Object();
+      personOther.age = 30;
+      personOther.greet = function (name) {
+        console.log(`Hello, ${name}`);
+      };
+
+      // personOther.greet = (name) => console.log(`Hello, ${name}`);   // Also possible
+
+      personOther.greet("Peter");
+
+      // Iteration
+      for (let key in personOther) {
+        console.log(key + " " + personOther[key]);
+      }
+
+
+      // Check out prototypes for more detailed object creation
+    </script>
+  </body>
+</html>
