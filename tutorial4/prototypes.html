@@ -1,0 +1,54 @@
+<html>
+  <bod>
+    <script>
+      function PersonWithoutPrototype(age) {
+        this.age = age;
+        this.talk = function () {
+          console.log("Hello from instance-specific function!"); // For each object, a copy of this function will be saved in this object => Not performant
+        };
+      }
+
+      // Without prototype - each instance has its own copy of 'talk'
+      const personA = new PersonWithoutPrototype(25);
+      personA.talk(); // Output: Hello from instance-specific function!
+
+      // Changing the 'talk' function in the constructor (for future instances only)
+      PersonWithoutPrototype = function (age) {
+        this.age = age;
+        this.talk = function () {
+          console.log("Hello from updated instance-specific function!");
+        };
+      };
+
+      const personB = new PersonWithoutPrototype(30);
+      personA.talk(); // Output: Hello from instance-specific function! (old function, since the function was copied in the instance)
+      personB.talk(); // Output: Hello from updated instance-specific function! (new function)
+    </script>
+
+    <script>
+      // Using Prototypes
+      // In JS each object instance has prototype
+      // Access of property of the instance => Returns local value if existing otherwise prototype value
+      // Changing prototype function will change all instances where it was not defined locally
+      // Also possible to simulate class inheritance (see lecture slides)
+      function PersonWithPrototype(age) {
+        this.age = age;
+      }
+
+      PersonWithPrototype.prototype.talk = function () {
+        console.log("Hello from prototype function!");
+      };
+
+      // With prototype - shared function
+      const personC = new PersonWithPrototype(35);
+      personC.talk(); // Output: Hello from prototype function!
+
+      // Update the prototype function (affects all instances that don't have a local 'talk')
+      PersonWithPrototype.prototype.talk = function () {
+        console.log("Hello from updated prototype function!");
+      };
+
+      personC.talk(); // Output: "Hello from updated prototype function!" (new function)
+    </script>
+  </bod>
+</html>

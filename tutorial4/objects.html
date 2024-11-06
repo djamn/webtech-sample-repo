@@ -36,34 +36,8 @@
         console.log(key + " " + personOther[key]);
       }
 
-      
 
-      // Objects and Constructors
-      function Person(age) {
-        this.age = age;
-        this.talk = function () {
-          console.log("Hello");
-        }; // For each object, a copy of this function will be saved in this object => Not performant
-      }
-      const person = new Person(20);
-      person.talk();
-
-      // Using Prototypes
-      // In Js each object instance has prototype
-      // Access of property of the instance => Returns local value if existing otherwise prototype value
-      // Changing Prototype Function will change all instances where it was not defined locally
-      // Also possible to simulate class inheritance (see lecture slides)
-
-      function Person2(age) {
-        this.age = age;
-      }
-
-      Person2.prototype.talk = function () {
-        console.log("Hello Prototype");
-      }; // Will be used in every instance (no copy) except when value is changed locally
-
-      const person2 = new Person2(20);
-      person2.talk();
+      // Check out prototypes for more detailed object creation
     </script>
   </body>
 </html>
