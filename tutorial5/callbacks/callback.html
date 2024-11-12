@@ -1,0 +1,46 @@
+<html>
+  <body>
+    <button id="myButton"></button>
+    <script>
+      // Using higher order functions as callbacks
+
+      // A function that takes a callback as an argument
+      function greetUser(name, callback) {
+        console.log(`Hello, ${name}!`);
+
+        // Call the callback function after 2 seconds
+        setTimeout(() => {
+          callback(name);
+        }, 2000);
+      }
+
+      function afterGreeting(name) {
+        console.log(`It was nice to meet you, ${name}!`);
+      }
+
+      greetUser("Alice", afterGreeting);
+    </script>
+
+    <script>
+      function fetchData(url, callback) {
+        setTimeout(() => {
+          const data = { name: "Alice", age: 25 };
+          callback(data); // Invoking the callback when data is ready (here simulated with 1s)
+        }, 1000);
+      }
+
+      fetchData("https://api.example.com", (data) => {
+        console.log(data); // This will run after the data is fetched
+      });
+    </script>
+
+    <script>
+      // Also widely used in event listeners
+      const button = document.getElementById("myButton");
+
+      button.addEventListener("click", function () {
+        alert("Button clicked!");
+      });
+    </script>
+  </body>
+</html>
