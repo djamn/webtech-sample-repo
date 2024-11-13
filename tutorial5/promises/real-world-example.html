@@ -1,0 +1,28 @@
+<html>
+  <body>
+    <script>
+      // URL of a sample API endpoint
+      const apiUrl = "https://jsonplaceholder.typicode.com/posts/1";
+
+      // Fetch data using .then and .catch
+      function fetchDataWithThenCatch() {
+        console.log("Fetching data...");
+
+        fetch(apiUrl) // fetch returns a promise
+          .then((response) => {
+            console.log("Received json response, parsing it...");
+            return response.json(); // Parse the JSON from the response
+          })
+          .then((data) => {
+            console.log("Data received:", data); // Log the data received when it finished parsing the json
+          })
+          .catch((error) => {
+            console.error("An error occurred:", error); // Log any error that occurs
+          });
+      }
+
+      // Calling the function
+      fetchDataWithThenCatch();
+    </script>
+  </body>
+</html>
