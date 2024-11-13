@@ -14,9 +14,11 @@
         });
       };
 
+      // If you use await in function, you have to mark the function as async
       async function getData() {
-        // If you use await in function, you have to mark the function as async
         try {
+          console.log("Fetching data...");
+
           const data = await fetchData(); // Waits until `fetchData` resolves, then the next statement will be executed
           console.log("Data received:", data);
         } catch (error) {
@@ -24,7 +26,19 @@
         }
       }
 
-      getData();
+      // Async function without 'await'
+      async function getDataWithoutAwait() {
+        try {
+          console.log("Fetching data without await...");
+          const data = fetchData(); // fetchData is called but not awaited
+          console.log(data); // Logs 'Promise { <pending> }' immediately
+        } catch (err) {
+          console.log("Error:", error);
+        }
+      }
+
+      getData();      // Output after 2 seconds: "Data received: <data>"
+      getDataWithoutAwait();    // Output immediately: "Promise { <pending> }" since the promise was not resolved before returning it
     </script>
 
     <script>
@@ -37,14 +51,18 @@
 
       const fetchOrders = (userId) => {
         return new Promise((resolve) => {
+          console.log(userId);
+
           setTimeout(() => resolve(["Order1", "Order2"]), 1000);
         });
       };
 
       async function fetchUserData() {
         try {
+          console.log("Fetching user..");
           const user = await fetchUser();
           console.log("User fetched:", user);
+          console.log("Fetching order..");
 
           const orders = await fetchOrders(user.id);
           console.log("Orders fetched:", orders);

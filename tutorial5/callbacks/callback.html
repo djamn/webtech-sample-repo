@@ -9,16 +9,21 @@
         console.log(`Hello, ${name}!`);
 
         // Call the callback function after 2 seconds (simulating api request)
+        let value;
         setTimeout(() => {
-          callback(name);
+          // We simulate an api request with a timeout of 2000ms. After that, the data is available
+          value = "String";
+          callback(name); // We want to call the next method when our data is available
         }, 2000);
+        return value;
       }
 
       function afterGreeting(name) {
         console.log(`It was nice to meet you, ${name}!`);
       }
 
-      greetUser("Alice", afterGreeting);
+      const value = greetUser("Alice", afterGreeting);
+      console.log(value); // Value is undefined since the function does not wait until the timeout is finished and returns the variable before it gets set. Therefore, we use callbacks, to call the method when the waiting time (e.g. api fetch) is finished
     </script>
 
     <script>
