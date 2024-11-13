@@ -31,7 +31,8 @@
         try {
           // Waiting for all promises and then handling the returned values
           // First return value will be stored in comments variable, the other in likes
-          const [comments, likes] = await Promise.all([ // Using await, the console.logs will be executed when Promise.all has finished
+          const [comments, likes] = await Promise.all([
+            // Using await, the console.logs will be executed when Promise.all has finished
             fetchComments(),
             fetchLikes(),
           ]);
