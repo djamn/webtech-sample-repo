@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        // Fetch in real world example. Waiting for response with .then(), then parse it
+        fetch('http://localhost:3000/items/item/item3?name=Another cool Item', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            // body: JSON.stringify({ description: 'DESCRIPTION' })
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+    </script>
+</body>
+
+</html>
