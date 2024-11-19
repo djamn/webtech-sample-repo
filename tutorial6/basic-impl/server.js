@@ -10,12 +10,12 @@ app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: true }));
 
 // Define a route for the root URL ('/')
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     // `req` (request) represents the HTTP request, including data like URL, headers, and query parameters
     // `res` (response) is used to send back the desired HTTP response to the client
 
     res.setHeader('Content-Type', 'text/html');
-    res.status(200).send("This is a simple application");
+    res.status(200).send("This is a simple application");   // You can set different statuses: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 });
 
 
@@ -27,7 +27,7 @@ app.get('/', function (req, res) {
 // res.redirect(): Redirects the client to a different URL
 
 
-app.get('/set/:text', function (req, res) {
+app.get('/set/:text', (req, res) => {
     let val = req.params.text;
 
     res.send(`This is a simple application receiving ${val}`);
@@ -38,7 +38,6 @@ app.get('/search', (req, res) => {
     const queryParam = req.query.q;                                                 // Access the query parameter 'q' from the request (domain: /search/?q=test)
 
     if (queryParam) res.send(`Search query: ${queryParam}`);                        // Respond with the query parameter value
-    // You can set different statuses: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
     else res.status(400).send('Query parameter "q" is required');                   // Respond with an error message if 'q' is not provided
 });
 
