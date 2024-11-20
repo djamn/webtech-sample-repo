@@ -1,7 +1,7 @@
-
+// https://www.w3schools.com/tags/ref_httpmethods.asp
 
 let express = require('express');
-let cors = require('cors')
+let cors = require('cors');
 let bodyParser = require('body-parser');
 const pool = require('./pool.js');  // db pool
 
@@ -10,7 +10,7 @@ app.use(express.static('public'));
 
 app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: true }));
-app.use(cors()); // allow all origins -> Access-Control-Allow-Origin: * (only for better testing)
+app.use(cors()); // allow all origins -> Access-Control-Allow-Origin: * (here: only for testing)
 app.use(bodyParser.json()); // support json encoded bodies
 
 

@@ -53,7 +53,6 @@ app.get('/res-methods', (req, res) => {
 });
 
 // Route demonstrating req methods
-
 app.get('/req-methods', (req, res) => {
     let data = {
         url: req.url,               // Returns the URL of the request
