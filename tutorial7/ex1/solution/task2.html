@@ -1,0 +1,26 @@
+<!-- 
+TASK2:
+  - Write a CSS rule to style the third child <p> inside a <div> element that is contained within a <section>
+  - Set the text color to green
+-->
+
+<html>
+  <head>
+    <style>
+      div[data-role="highlight"] span.special + em {
+        color: orange;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div data-role="highlight">
+      <span class="special">Special Content</span>
+      <em>Emphasized Text - Should be orange</em>
+    </div>
+    <div>
+      <span class="special">Another Content</span>
+      <em>Emphasized Text - Should not be styled</em>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!-- 
+TASK1: 
+  - Write a CSS rule to style all <h2> elements that are direct children of <section> elements
+  - Set their text color to blue
+-->
+
+<html>
+  <head>
+    <style>
+      section > h2 {
+        color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <h2>Heading 1 - Should be blue</h2>
+      <div>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+        <p>Paragraph 3</p>
+        <p>Paragraph 4</p>
+      </div>
+      <h2>Heading 2 - Should be blue</h2>
+    </section>
+    <section>
+      <h2>Heading 3 - Should be blue</h2>
+    </section>
+  </body>
+</html>

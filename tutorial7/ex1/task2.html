@@ -1,0 +1,19 @@
+<!-- 
+TASK2:
+  - Write a CSS rule that sets the text color of the <em> element to orange only if the <div> has:
+    - a data-role attribute with value "highlight"
+    - a child <span> with the class special directly before the <em> element
+-->
+
+<html>
+  <body>
+    <div data-role="highlight">
+      <span class="special">Special Content</span>
+      <em>Emphasized Text - Should be orange</em>
+    </div>
+    <div>
+      <span class="special">Another Content</span>
+      <em>Emphasized Text - Should not be styled</em>
+    </div>
+  </body>
+</html>
