@@ -1,5 +1,29 @@
 <html>
   <body>
-    <script></script>
+    <script>
+      let count = 0;
+      let increment = (x) => {
+        count += x;
+        console.log("Incremented count to:", count);
+      };
+      let multiplier = (x, y) => x * y;
+
+      function createFunction(a, b, c) {
+        if (c === undefined) {
+          return function (c) {
+            c += 1;
+            return b(c, a);
+          };
+        } else {
+          return b(a, c);
+        }
+      }
+
+      console.log("Result 1:", createFunction(2, multiplier, 3)); // ?
+      let newFunc = createFunction(4, multiplier);
+      console.log("Result 2:", newFunc(5)); // ?
+      increment(2); // ?
+      console.log("Result 3:", newFunc(6)); // ?
+    </script>
   </body>
 </html>
