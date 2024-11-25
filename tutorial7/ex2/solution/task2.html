@@ -1,0 +1,32 @@
+<!-- 
+
+TASK1: Using DOM methods (excluding querySelector), select the second element with class "hello" and output its textContent
+
+-->
+
+<html>
+  <body>
+    <ul id="menu">
+      <li><a class="hello" href="#">Home</a></li>
+      <li><a class="hello" href="#">Services</a></li>
+      <li><a class="hello" href="#">Contact</a></li>
+    </ul>
+
+    <script>
+      // Get all <a> elements inside the document
+      const allLinks = document.getElementsByClassName("hello");
+
+      // Select the second <a> element (index 1)
+      const secondLink = allLinks[1];
+
+      // Get the lastChild of the second <a> element
+      const lastChild = secondLink.lastChild;
+
+      // Get the parentNode of the lastChild
+      const parentOfLastChild = lastChild.parentNode;
+
+      // Output the nodeName of the parentNode
+      console.log(parentOfLastChild.nodeName); // Should log 'A'
+    </script>
+  </body>
+</html>
