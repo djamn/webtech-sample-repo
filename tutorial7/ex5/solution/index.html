@@ -1,0 +1,42 @@
+<!-- 
+
+TASK: Create a method that fetches users from the provided url and search if a specific usermail exists. Output them via callback when found.
+
+-->
+
+<html>
+  <body>
+    <script>
+      // Also possible via promises
+      async function getUserByEmail(usermail, callback) {
+        try {
+          // 1) Fetch users from url https://jsonplaceholder.typicode.com/users
+          const usersResponse = await fetch(
+            "https://jsonplaceholder.typicode.com/users"
+          );
+          // 2) Parse userResponse (json)
+          const users = await usersResponse.json();
+
+          // 3) Check if usermail equals mail in userResponse
+          const foundUser = users.find((user) => user.email === usermail); // find returns first user
+
+          // const foundUser = users.filter((user) => user.email === usermail);  // filter returns all found user
+
+          // You can also filter for specific user data, here address:
+          // const foundUserAddress = users.filter((user) => user.email === usermail).map(user => user.address)
+          // console.log("Adress:", foundUserAddress);
+
+          // 4) If there exist an entry, call the callback which outputs the user
+          if (foundUser) callback(foundUser);
+          else console.warn(`No user with mail ${usermail} found`);
+        } catch (err) {
+          console.error("Error occurred", err);
+        }
+      }
+
+      getUserByEmail("Sherwood@rosamond.me", (foundUser) => {
+        console.log(foundUser);
+      });
+    </script>
+  </body>
+</html>
