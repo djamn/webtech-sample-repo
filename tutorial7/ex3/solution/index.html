@@ -1,5 +1,25 @@
+<!-- 
+ 
+TASK3: Handle the button click via javascript (hint: eventlistener) 
+and display the text "Hello World" inside the div when the button was clicked
+
+-->
+
 <html>
   <body>
-    <script></script>
+    <button id="button-click">Click me</button>
+    <div class="text-output"></div>
+
+    <script>
+      const button = document.getElementById("button-click");
+
+      button.addEventListener("click", printOutput);
+
+      function printOutput() {
+        const textOutput = document.getElementsByClassName("text-output")[0];
+
+        textOutput.textContent = "Hello World";
+      }
+    </script>
   </body>
 </html>
