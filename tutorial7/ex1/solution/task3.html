@@ -1,15 +1,15 @@
 <!-- 
 TASK (more complex):
-  - Write a CSS rule that targets an <input> element of type text that is:
-    - immediately preceded by a <label> element with a for attribute matching the id of the <input>
-    - inside a <div> with the class form-group
+  - Write a CSS rule that targets an <input> element of type text that:
+    - is inside a <div> with the class form-group
+    - comes immediately after a <label> element with a for attribute
     - only when the <input> is in a :focus state
 -->
 
 <html>
   <head>
     <style>
-      .form-group > label[for] + input[type="text"]:focus {
+      div.form-group > label[for] + input[type="text"]:focus {
         background-color: blue;
       }
     </style>

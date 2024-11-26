@@ -1,6 +1,8 @@
 <!-- 
 
-TASK: Using DOM methods (excluding querySelector), select the second element with class "hello" and output its textContent
+TASK: Using DOM methods (excluding querySelector), select the second element with the class "hello", 
+  access its last child, 
+  then find and log the text content of the parent node of that last child
 
 -->
 
@@ -26,7 +28,7 @@ TASK: Using DOM methods (excluding querySelector), select the second element wit
       const parentOfLastChild = lastChild.parentNode;
 
       // Output the nodeName of the parentNode
-      console.log(parentOfLastChild.nodeName); // Should log 'A'
+      console.log(parentOfLastChild.textContent); // Should log 'A'
     </script>
   </body>
 </html>
