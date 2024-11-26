@@ -15,10 +15,19 @@ Output them via callback when found
           const usersResponse = await fetch(
             "https://jsonplaceholder.typicode.com/users"
           );
-          // 2) Parse userResponse (json)
+
+          // 2) Check if the response is not OK (status not between 200-299)
+          if (!usersResponse.ok) {
+            console.error(
+              `HTTP error: ${usersResponse.status} ${usersResponse.statusText}`
+            );
+            return;
+          }
+
+          // 3) Parse userResponse (json)
           const users = await usersResponse.json();
 
-          // 3) Check if usermail equals mail in userResponse
+          // 4) Check if usermail equals mail in userResponse
           const foundUser = users.find((user) => user.email === usermail); // find returns first user
 
           // const foundUser = users.filter((user) => user.email === usermail);  // filter returns all found user
@@ -27,7 +36,7 @@ Output them via callback when found
           // const foundUserAddress = users.filter((user) => user.email === usermail).map(user => user.address)
           // console.log("Adress:", foundUserAddress);
 
-          // 4) If there exist an entry, call the callback which outputs the user
+          // 5) If there exist an entry, call the callback which outputs the user
           if (foundUser) callback(foundUser);
           else console.warn(`No user with mail ${usermail} found`);
         } catch (err) {

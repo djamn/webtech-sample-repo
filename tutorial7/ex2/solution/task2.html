@@ -20,6 +20,9 @@ TASK: Using DOM methods (excluding querySelector), select the second element wit
 
       // Select the second <a> element (index 1)
       const secondLink = allLinks[1];
+      
+      // Small funfact: for selecting allLinks[2] you can also use the following:
+      // console.log(secondLink.parentElement.nextElementSibling.children[0]);
 
       // Get the lastChild of the second <a> element
       const lastChild = secondLink.lastChild;

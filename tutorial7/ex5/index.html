@@ -11,12 +11,13 @@ TASK: Create a method that fetches users from the provided url and search if a s
       // Also possible via promises
       async function getUserByEmail(usermail, callback) {
         // 1) Fetch users from url https://jsonplaceholder.typicode.com/users
-        // 2) Parse userResponse (json)
-        // 3) Check if usermail equals mail in userResponse
-        // 4) If there exist an entry, call the callback which outputs the user
+        // 2) Check if the response is not OK (status not between 200-299)
+        // 3) Parse userResponse (json)
+        // 4) Check if usermail equals mail in userResponse
+        // 5) If there exist an entry, call the callback which outputs the user
       }
 
-      getPostsByUser("Sherwood@rosamond.me", (postTitles) => { console.log(postTitles); });
+      getUserByEmail("Sherwood@rosamond.me", (foundUser) => { console.log(foundUser); });
     </script>
   </body>
 </html>
