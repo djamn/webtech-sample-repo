@@ -9,7 +9,7 @@
     - Docker Desktop
     - PostgreSQL > 15
     - PgAdmin 4
-## Backend
+### Backend
 - Install dependencies (``npm i ``)
 - Create Express app
 - Connect Express app with Postgres Database
@@ -28,63 +28,39 @@
   - Add new PostgresSQL database in this server:
     - Database Name: **postgres**
     - Database Password: **postgres**
-
-- ng new frontend -> CSS ->
-- SSR / SSG (vor nachteile todo)
-
-Installing tailwind (todo)
-
-Create model folder for type -> Bike
-
-Creating child components with ng g c /components/bikes and bike
-Creating page component (optional) with ng g c /pages/bikes
-Combine everything in the page - Here it is only the component, but otherwise we also have navbar and footer.
-
-Routing:
-In app.config: (already existing)
-```typescript
-import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
-export const appConfig: ApplicationConfig = {
- providers: [ ... , provideRouter(routes)]
-};
-```
-
-In app.routes you can set specific routes
-    {path: '', component: BikesComponent},
-
-
-Now we set that our app.component.html will use the router-outlet to handle routes:
-``<router-outlet></router-outlet>`` (app.component.html)
-
-Now we define an interface for our bikes:
-ng g i /types/bike
-
-Here we define all fields, that bike can have (see database schema)
-TODO
-
-
-Creating Service
-ng g s /services/bikes
-
-```
-@Injectable
-export class BikeService { }
-```
-
-In the components:
-```
-import {BikeService} from "./services/bike.service";
-@Component({
- providers: [BikeService]
-})
-```
-
-By using REST we need obserables (subscribe)
-TODO also using specific dependencies
+### Frontend
+- Create new Angular (>=17) application: ``ng new <name>``
+  - Select CSS
+  - Choose between SSR and SSG (https://www.telerik.com/blogs/angular-basics-ssr-ssg-partial-hydration-angular-18)
+  - (Optional) Using tailwindCSS for much easier style implementation: https://tailwindcss.com/
+    - ``npm install -D tailwindcss``
+    - ``npx tailwind init``
+    - In tailwind.config.js define the following structure
+      ```js
+      module.exports = {
+        content: ["./src/**/*.{html,js}"],
+        theme: {
+          extend: {},
+        },
+        plugins: [],
+      }
+      ```
+- **Additional changes for our example:**
+  - Creating child components with: ``ng g c /components/bikes`` and ``ng g c /components/bike``
+  - Creating page component (optional) with: ``ng g c /pages/bikes`` (Here: not necessary but good abstraction when using navbar & footer)
+    - Add all components you need into the page component. The page gets displayed.
+  - **Routing**
+    - In **app.routes** you can set specific routes: ``{path: '', component: BikesComponent},``
+  - Now we set that our **app.component.html** will use the router-outlet to handle routes: ``<router-outlet></router-outlet>`` (app.component.html)
+  - Now we define an interface for our bikes: ``ng g i /types/bike``
+    - Here we define all fields, that bike can have (see database schema)
+    - Here: ``bike_id, bike_name, is_avaiable, size, price``
+  - Creating Service: ``ng g s /services/bikes``
+    - Connect service with your components (see Angular guide or example)
+  - Using **HTTPClient** to execute REST queries and handling requests by using observables.
 
 # Execution
-- Start pgAdmin/postgres and Docker Desktop
+- Start **pgAdmin/postgres** and **Docker Desktop**
 - Create and populate database tables with ``docker-compose up -d``
 - Check out /backend folder
     - Start backend with **node server.js**
