@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Bike} from "../../types/bike";
 
 @Component({
   selector: 'bike-component',
@@ -8,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './bike.component.css'
 })
 export class BikeComponent {
+
+  @Input()
+  bike: Bike | undefined;
+
+  constructor() {
+
+  }
 
 }

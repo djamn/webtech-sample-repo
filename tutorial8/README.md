@@ -45,6 +45,12 @@
         plugins: [],
       }
       ```
+    - Now add the following annotations to the main css file (styles.css):
+      ```css
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+      ```
 - **Additional changes for our example:**
   - Creating child components with: ``ng g c /components/bikes`` and ``ng g c /components/bike``
   - Creating page component (optional) with: ``ng g c /pages/bikes`` (Here: not necessary but good abstraction when using navbar & footer)
