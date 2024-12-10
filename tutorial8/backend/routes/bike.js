@@ -39,7 +39,7 @@ router.delete('/:id', async (req, res) => {
             return res.status(404).json({ error: "Bike not found" });
         }
 
-        res.status(200).json({ message: "Bike deleted successfully", bike: results.rows[0] });
+        res.status(200).json({ message: "Bike deleted successfully", amount: results.rowCount });
     } catch (error) {
         console.error("Error while deleting bike:", error.message);
         res.status(500).json({ error: "Error while deleting bike: " + error.message });

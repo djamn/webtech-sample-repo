@@ -1,6 +1,13 @@
 <div class="flex flex-col border border-gray-400 rounded-md mb-5 w-full p-2">
-  <span>ID: {{ bike?.bike_id }}</span>
-  <span>Name: {{bike?.bike_name}}</span>
-  <span>Is Available: {{bike?.is_available}}</span>
-  <span>Price: {{bike?.price}}</span>
+  <div class="flex w-full">
+    <span>ID: {{ bike?.bike_id }}</span>
+    <span>Name: {{ bike?.bike_name }}</span>
+    <span>Is Available: {{ bike?.is_available }}</span>
+    <span>Price: {{ bike?.price }}</span>
+  </div>
+  <div class="flex w-full">
+    <button class="ml-auto rounded bg-red-600 p-1 text-white hover:scale-105 transition-all duration-200" (click)="deleteItem()">
+      Delete
+    </button>
+  </div>
 </div>

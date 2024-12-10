@@ -29,7 +29,12 @@ export class BikesComponent implements OnInit {
     this.bikesService.getBikes().subscribe(data => {
       this.bikes = data;
       console.log(this.bikes)
-    })
+    });
+  }
+
+  onBikeDeleted(bikeId: number) {
+    console.log('Bike deleted with ID:', bikeId);
+    this.fetchData()
   }
 
 }

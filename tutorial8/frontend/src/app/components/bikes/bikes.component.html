@@ -1,7 +1,7 @@
 <div class="flex flex-col w-full justify-center items-center">
   <div class="text-2xl font-semibold flex w-auto mb-4">Bikes Overview</div>
   <div *ngFor="let bike of bikes" class="w-[90%]">
-    <bike-component [bike]="bike"></bike-component>
+    <bike-component [bike]="bike" (deleteSuccess)="onBikeDeleted($event)">></bike-component>
   </div>
 
 
